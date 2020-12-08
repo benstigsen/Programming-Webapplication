@@ -7,18 +7,32 @@
 </head>
 <body>
   <form method="post">
-    <h3>Variable</h3>
-    <input type="text" name="defineVariable" placeholder="var">
+    <!-- Variables -->
+    <h3>Variables</h3>
+    <input type="text" name="variablePrefix" placeholder="var">
     &lt;name&gt;
-    <input type="text" name="defineVariable" placeholder="=">
+    <input type="text" name="variableAssignment" placeholder="=">
     &lt;value&gt;
-  <!--
-    <input type="text" name="definePlus">
-    <input type="text" name="defineMinus">
-    <input type="text" name="defineMultiply">
-    <input type="text" name="defineDivide">
-    <input type="text" name="defineModulo">
-  -->
+    <br>
+
+    <!-- Operators -->
+    <h3>Operators</h3>
+    + = <input type="text" name="operatorAddition" placeholder="+">
+    <br>
+    - = <input type="text" name="operatorSubtract" placeholder="-">
+    <br>
+    * = <input type="text" name="operatorMultiply" placeholder="*">
+    <br>
+    / = <input type="text" name="operatorDivide" placeholder="/">
+    <br>
+    % = <input type="text" name="operatorModulo" placeholder="%">
+    <br>
+
+    <!-- Print -->
+    <h3>Print</h3>
+    <input type="text" name="printOpen" placeholder="print(">
+    &lt;value_or_variable&gt;
+    <input type="text" name="printClose" placeholder=")">
   </form>
 </body>
 </html>
