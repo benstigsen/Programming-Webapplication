@@ -1,0 +1,12 @@
+code
+{
+  background-color: #EFEFEF;
+}
+
+pre 
+{
+  overflow: auto;
+  background-color: #EFEFEF;
+  padding:0px 10px 10px 10px;
+  max-width: 400px;
+}

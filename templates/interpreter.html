@@ -3,8 +3,44 @@
 <head>
   <meta charset="utf-8">
   <title>Interpreter | {{ language.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/interpreter.css') }}">
 </head>
 <body>
-  <h3>{{ language.name }}</h3>
+  <h1>{{ language.name }}</h2>
+  <hr>
+  <h2>Syntax for {{ language.name }}</h3>
+  
+  <!-- Variables -->
+  <p>Variables are defined like:</p>
+  <code>{{ language.variable.prefix }} x {{ language.variable.assign}} "Hello World"</code>
+
+  <br>
+
+  <!-- Operators -->
+  <p>Operators:</p>
+<pre><code>
+ADDITION:     6 {{ language.operator.add }} 5 = 11 
+SUBTRACTION:  6 {{ language.operator.sub }} 5 = 01 
+MULTIPLY:     6 {{ language.operator.mul }} 5 = 30 
+DIVISION:     6 {{ language.operator.div }} 5 = 1.2
+MODULO:       6 {{ language.operator.mod }} 5 = 01
+</code></pre>
+
+  <!-- Print -->
+  <p>Printing is done by calling the print function like so:</p>
+  <code>{{ language.print.open }} "Hello World" {{ language.print.close }}</code>
+
+  <hr>
+
+  <h2>Intepreter</h2>
+  <p>Type the code in your language below:</p>
+  <textarea rows="12" cols="80">
+{{ language.variable.prefix }} message {{ language.variable.assign }} "Hello World!"
+{{ language.variable.prefix }} x {{ language.variable.assign }} 5
+{{ language.variable.prefix }} y {{ language.variable.assign }} 7
+
+{{ language.print.open }} message {{ language.print.close }}
+{{ language.print.open }} x {{ language.operator.add}} y {{ language.print.close }}
+  </textarea>
 </body>
 </html>
