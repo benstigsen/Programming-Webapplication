@@ -7,32 +7,52 @@
 </head>
 <body>
   <form method="post">
+    <!-- Language Name -->
+    <div class="language">
+      <h3>Language</h3>
+      <input type="text" name="languageName" placeholder="Language Name">
+      <br>
+    </div>
+
     <!-- Variables -->
-    <h3>Variables</h3>
-    <input type="text" name="variablePrefix" placeholder="var">
-    &lt;name&gt;
-    <input type="text" name="variableAssignment" placeholder="=">
-    &lt;value&gt;
-    <br>
+    <div class="variable">
+      <h3>Variables</h3>
+      <input type="text" name="variablePrefix" placeholder="var">
+      &lt;name&gt;
+      <input type="text" name="variableAssignment" placeholder="=">
+      &lt;value&gt;
+      <br>
+    </div>
 
     <!-- Operators -->
-    <h3>Operators</h3>
-    + = <input type="text" name="operatorAddition" placeholder="+">
-    <br>
-    - = <input type="text" name="operatorSubtract" placeholder="-">
-    <br>
-    * = <input type="text" name="operatorMultiply" placeholder="*">
-    <br>
-    / = <input type="text" name="operatorDivide" placeholder="/">
-    <br>
-    % = <input type="text" name="operatorModulo" placeholder="%">
-    <br>
+    <div class="operator">
+      <h3>Operators</h3>
+      + = <input type="text" name="operatorAddition" placeholder="+">
+      <br>
+      - = <input type="text" name="operatorSubtract" placeholder="-">
+      <br>
+      * = <input type="text" name="operatorMultiply" placeholder="*">
+      <br>
+      / = <input type="text" name="operatorDivide" placeholder="/">
+      <br>
+      % = <input type="text" name="operatorModulo" placeholder="%">
+      <br>
+    </div>
 
     <!-- Print -->
-    <h3>Print</h3>
-    <input type="text" name="printOpen" placeholder="print(">
-    &lt;value_or_variable&gt;
-    <input type="text" name="printClose" placeholder=")">
+    <div class="print">
+      <h3>Print</h3>
+      <input type="text" name="printOpen" placeholder="print(">
+      &lt;value_or_variable&gt;
+      <input type="text" name="printClose" placeholder=")">
+    </div>
+    
+    <br><hr><br>
+
+    <!-- Create -->
+    <div class="create">
+      <input type="submit" name="submit" value="Create Language">
+    </div>
   </form>
 </body>
 </html>
