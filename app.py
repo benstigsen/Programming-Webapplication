@@ -25,13 +25,14 @@ def overview():
 
 @app.route("/interpreter/<language>", methods=["GET", "POST"])
 def interpreter(language):
+	# Run Code
 	if request.method == "POST":
 		for lang in languages:
 			if lang.name == language:
 				code = request.form["codearea"]
 				output = interpret(lang, request.form["codearea"])
 				return render_template("interpreter.html", language=lang, code=code, output=output)
-
+	# Load page
 	for lang in languages:
 		if lang.name == language:
 			code = lang.generateExample()

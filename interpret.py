@@ -35,7 +35,7 @@ def interpret(syntax, content):
 					value = line[line.find(f' {syntax.variable["assign"]}') + len(syntax.variable["assign"]) + 1:].strip()
 
 					if value[0] == '"' and value[-1] == '"':
-						variables[words[1]] = value[1:-2]
+						variables[words[1]] = value[1:-1]
 						continue
 					else:
 						variables[words[1]] = value 
@@ -52,7 +52,7 @@ def interpret(syntax, content):
 		# Print
 		if words[0] == syntax.print["open"]:
 			if words[-1] == syntax.print["close"]:
-				text = " ".join(words[1:-2]).strip()
+				text = " ".join(words[1:-1]).strip()
 
 				if len(words) == 2 or len(text) == 0:
 					output.append("\n")
@@ -84,8 +84,6 @@ def interpret(syntax, content):
 			else:
 				error(i, f'`{syntax.print["open"]}` is not closed with `{syntax.print["close"]}`')
 				continue
-
-	print(output)
 
 	return output
 	
