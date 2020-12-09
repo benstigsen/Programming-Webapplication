@@ -28,19 +28,28 @@ MODULO:       6 {{ language.operator.mod }} 5 = 01
 
   <!-- Print -->
   <p>Printing is done by calling the print function like so:</p>
-  <code>{{ language.print.open }} "Hello World" {{ language.print.close }}</code>
+<pre><code>
+{{ language.print.open }}"Hello World"{{ language.print.close }}
+{{ language.print.open }}variable_name{{ language.print.close }}
+{{ language.print.open }}x + y{{ language.print.close }} this only works with numbers
+{{ language.print.open }}2 + 7.5{{ language.print.close }}
+</code></pre>
 
   <hr>
 
   <h2>Intepreter</h2>
   <p>Type the code in your language below:</p>
-  <textarea rows="12" cols="80">
-{{ language.variable.prefix }} message {{ language.variable.assign }} "Hello World!"
-{{ language.variable.prefix }} x {{ language.variable.assign }} 5
-{{ language.variable.prefix }} y {{ language.variable.assign }} 7
+  <textarea rows="12" cols="80" form="interpreterForm" name="codearea">{{ code }}</textarea>
+  <form id="interpreterForm" method="post">
+     <input type="submit", value="Run">
+  </form>
 
-{{ language.print.open }} message {{ language.print.close }}
-{{ language.print.open }} x {{ language.operator.add}} y {{ language.print.close }}
-  </textarea>
+  <hr>
+
+  <h3>Output:</h3>
+  <textarea rows="12" cols="80">
+{% for line in output %}
+{{ line }}
+{% endfor %}</textarea>
 </body>
 </html>

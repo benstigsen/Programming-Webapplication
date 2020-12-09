@@ -1,10 +1,10 @@
 from flask import Flask, redirect, render_template, request, url_for
 from language import Language
+from interpret import interpret
 
 app = Flask(__name__)
 
 languages = []
-language_current = 0
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -23,10 +23,18 @@ def create():
 def overview():
 	return render_template("overview.html", languages=languages)
 
-@app.route("/interpreter/<language>")
+@app.route("/interpreter/<language>", methods=["GET", "POST"])
 def interpreter(language):
+	if request.method == "POST":
+		for lang in languages:
+			if lang.name == language:
+				code = request.form["codearea"]
+				output = interpret(lang, request.form["codearea"])
+				return render_template("interpreter.html", language=lang, code=code, output=output)
+
 	for lang in languages:
 		if lang.name == language:
-			return render_template("interpreter.html", language=lang)
+			code = lang.generateExample()
+			return render_template("interpreter.html", language=lang, code=code, output=[])
 
 	return redirect("../../overview")
