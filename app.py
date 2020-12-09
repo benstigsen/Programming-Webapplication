@@ -1,10 +1,11 @@
 from flask import Flask, redirect, render_template, request, url_for
-from language import Language
+from language import Language, ExampleLanguage
 from interpret import interpret
 
 app = Flask(__name__)
 
-languages = []
+# By default we include an example language
+languages = [ExampleLanguage()]
 
 @app.route("/", methods=["GET", "POST"])
 def index():

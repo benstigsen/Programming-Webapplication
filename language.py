@@ -23,16 +23,16 @@ class Language:
 		}
 		
 		self.operator = {
-			"add": _data["operatorAdd"] 		if (len(_data["operatorAdd"]) > 0) else "+",
+			"add": _data["operatorAdd"] 		if (len(_data["operatorAdd"]) > 0) 		else "+",
 			"sub": _data["operatorSubtract"] 	if (len(_data["operatorSubtract"]) > 0) else "-",
 			"mul": _data["operatorMultiply"] 	if (len(_data["operatorMultiply"]) > 0) else "*",
-			"div": _data["operatorDivide"] 		if (len(_data["operatorDivide"]) > 0) else "/",
-			"mod": _data["operatorModulo"] 		if (len(_data["operatorModulo"]) > 0) else "%"
+			"div": _data["operatorDivide"] 		if (len(_data["operatorDivide"]) > 0) 	else "/",
+			"mod": _data["operatorModulo"] 		if (len(_data["operatorModulo"]) > 0) 	else "%"
 		}
 
 		self.print = {
-			"open": _data["printOpen"] 			if (len(_data["printOpen"]) > 0) else "print(",
-			"close": _data["printClose"] 		if (len(_data["printClose"]) > 0) else ")"
+			"open": _data["printOpen"] 			if (len(_data["printOpen"]) > 0) 	else "print(",
+			"close": _data["printClose"] 		if (len(_data["printClose"]) > 0) 	else ")"
 		}
 
 	def generateExample(self):
@@ -45,4 +45,22 @@ class Language:
 			f'{self.print["open"]} x {self.operator["add"]} y {self.print["close"]}\n'
 		)
 
+class ExampleLanguage(Language):
+	def __init__(self):
+		data = {
+			"languageName": 	"Example Language",
 
+			"variablePrefix": 	"VAR",
+			"variableAssign": 	"=",
+
+			"operatorAdd": 		"ADD",
+			"operatorSubtract": "SUB",
+			"operatorMultiply": "MUL",
+			"operatorDivide": 	"DIV",
+			"operatorModulo": 	"MOD",
+
+			"printOpen": 		"PRINT(",
+			"printClose": 		")"
+		}
+
+		super().__init__(data)
