@@ -18,6 +18,14 @@ def interpret(syntax, content):
 	content = content.replace(syntax.print["open"], f'{syntax.print["open"]} ')
 	content = content.replace(syntax.print["close"], f' {syntax.print["close"]}')
 
+	# Replace operators with "proper" math operators
+	syntax.operator["add"] = "+"
+	syntax.operator["sub"] = "-"
+	syntax.operator["mul"] = "*"
+	syntax.operator["div"] = "/"
+	syntax.operator["mod"] = "%"
+
+
 	# Get variables first
 	lines = content.split("\n")
 
@@ -73,14 +81,13 @@ def interpret(syntax, content):
 				if math:
 					continue
 
-				# String
-				if len(words) > 2:			
-					if (text != text.lower()) or (text != text.upper()):
-						output.append(text)
-						continue
-					else:
-						error(i, 'Unknown variable(s) (put "double quotes" around the text to print directly)')
-						continue
+				# String		
+				if (text != text.lower()) or (text != text.upper()):
+					output.append(text)
+					continue
+				else:
+					error(i, 'Unknown variable(s) (put "double quotes" around the text to print directly)')
+					continue
 			else:
 				error(i, f'`{syntax.print["open"]}` is not closed with `{syntax.print["close"]}`')
 				continue
