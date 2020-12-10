@@ -3,23 +3,26 @@ i = 0
 class Language:
 	def __init__(self, data):
 		global i
-		i += 1
 
 		# Make request form data mutable
 		_data = {}
 		for key in data:
 			_data[key] = data[key].strip()
 
-		# Create easy dictionaries and verify request form data
-		self.name = _data["languageName"] 		if (len(_data["languageName"]) > 0) else f"Language {i}"
+		# Create dictionaries for easy access and verify request form data
+		if len(_data["languageName"]) > 0:
+			self.name = _data["languageName"]
+		else:
+			i += 1
+			self.name = f"Language {i}"
 		
 		if _data["variablePrefix"] == _data["variableAssign"]:
 			_data["variablePrefix"] = "var"
 			_data["variableAssign"] = "="
 
 		self.variable = {
-			"prefix": _data["variablePrefix"] 	if (len(_data["variablePrefix"]) > 0) else "var",
-			"assign": _data["variableAssign"] 	if (len(_data["variableAssign"]) > 0) else "="
+			"prefix": _data["variablePrefix"] 	if (len(_data["variablePrefix"]) > 0) 	else "var",
+			"assign": _data["variableAssign"] 	if (len(_data["variableAssign"]) > 0) 	else "="
 		}
 		
 		self.operator = {
@@ -31,8 +34,8 @@ class Language:
 		}
 
 		self.print = {
-			"open": _data["printOpen"] 			if (len(_data["printOpen"]) > 0) 	else "print(",
-			"close": _data["printClose"] 		if (len(_data["printClose"]) > 0) 	else ")"
+			"open": _data["printOpen"] 			if (len(_data["printOpen"]) > 0) 		else "print(",
+			"close": _data["printClose"] 		if (len(_data["printClose"]) > 0) 		else ")"
 		}
 
 	def generateHelloWorld(self):
