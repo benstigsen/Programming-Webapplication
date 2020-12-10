@@ -33,12 +33,7 @@ def interpret(syntax, content):
 				if words[2] == syntax.variable["assign"]:
 					value = line[line.find(f' {syntax.variable["assign"]}') + len(syntax.variable["assign"]) + 1:].strip()
 
-					if value[0] == '"' and value[-1] == '"':
-						variables[words[1]] = value[0:]
-						continue
-					else:
-						variables[words[1]] = value 
-						continue
+					variables[words[1]] = value
 				else:
 					error(i, f'You did not assign the variable with: {syntax.variable["assign"]}')
 					continue
@@ -84,4 +79,3 @@ def interpret(syntax, content):
 				continue
 
 	return output
-	
