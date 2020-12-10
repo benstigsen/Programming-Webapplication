@@ -26,7 +26,7 @@ def overview():
 
 @app.route("/interpreter/<language>", methods=["GET", "POST"])
 def interpreter(language):
-	# Run Code
+	# Run code
 	if request.method == "POST":
 		for lang in languages:
 			if lang.name == language:

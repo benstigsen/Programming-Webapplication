@@ -83,6 +83,5 @@ def interpret(syntax, content):
 				error(i, f'`{syntax.print["open"]}` is not closed with `{syntax.print["close"]}`')
 				continue
 
-
 	return output
 	
