@@ -33,6 +33,7 @@ def interpreter(language):
 				code = request.form["codearea"]
 				output = interpret(lang, request.form["codearea"])
 				return render_template("interpreter.html", language=lang, code=code, output=output)
+	
 	# Load page
 	for lang in languages:
 		if lang.name == language:
