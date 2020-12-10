@@ -36,7 +36,7 @@ def interpreter(language):
 	# Load page
 	for lang in languages:
 		if lang.name == language:
-			code = lang.generateExample()
+			code = lang.generateHelloWorld()
 			return render_template("interpreter.html", language=lang, code=code, output=[])
 
 	return redirect("../../overview")

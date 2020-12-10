@@ -35,7 +35,7 @@ class Language:
 			"close": _data["printClose"] 		if (len(_data["printClose"]) > 0) 	else ")"
 		}
 
-	def generateExample(self):
+	def generateHelloWorld(self):
 		return (
 			f'{self.variable["prefix"]} message {self.variable["assign"]} "Hello World!"\n'
 			f'{self.variable["prefix"]} x {self.variable["assign"]} 5\n'
