@@ -18,15 +18,6 @@ def interpret(syntax, content):
 	content = content.replace(syntax.print["open"], f'{syntax.print["open"]} ')
 	content = content.replace(syntax.print["close"], f' {syntax.print["close"]}')
 
-	# Replace operators with "proper" math operators
-	syntax.operator["add"] = "+"
-	syntax.operator["sub"] = "-"
-	syntax.operator["mul"] = "*"
-	syntax.operator["div"] = "/"
-	syntax.operator["mod"] = "%"
-
-
-	# Get variables first
 	lines = content.split("\n")
 
 	for i, line in enumerate(lines):
@@ -43,7 +34,7 @@ def interpret(syntax, content):
 					value = line[line.find(f' {syntax.variable["assign"]}') + len(syntax.variable["assign"]) + 1:].strip()
 
 					if value[0] == '"' and value[-1] == '"':
-						variables[words[1]] = value[1:-1]
+						variables[words[1]] = value[0:]
 						continue
 					else:
 						variables[words[1]] = value 
@@ -65,32 +56,33 @@ def interpret(syntax, content):
 				if len(words) == 2 or len(text) == 0:
 					output.append("\n")
 					continue
-				
+
 				# Math
 				math = False
-				for op in syntax.operator:
-					if syntax.operator[op] in line:
+				for x in range(0, 10):
+					if str(x) in text:
 						math = True
 						try:
 							result = eval(text)
 							output.append(result)
 						except:
-							error(i, "Invalid math. Make sure it matches your syntax or exists")
+							error(i, "Invalid math. Make sure it matches your syntax or that the variables exists")
 						break
-				
 				if math:
 					continue
 
-				# String		
-				if (text != text.lower()) or (text != text.upper()):
-					output.append(text)
-					continue
-				else:
-					error(i, 'Unknown variable(s) (put "double quotes" around the text to print directly)')
-					continue
+				# String
+				if len(text) >= 2:
+					if text[0] == '"' and text[-1] == '"':
+						output.append(text[1:-1])
+						continue
+				
+				error(i, 'Unknown variable(s) (put "double quotes" around the text to print directly)')
+
 			else:
 				error(i, f'`{syntax.print["open"]}` is not closed with `{syntax.print["close"]}`')
 				continue
+
 
 	return output
 	
